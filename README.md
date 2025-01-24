@@ -36,3 +36,5 @@ Aplikacja wykorzystuje:
 3. Skompiluj kod serwera:
    ```bash
    javac BingoServer.java
+
+4. Uruchom serwer
