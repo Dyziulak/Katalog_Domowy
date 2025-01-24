@@ -38,3 +38,7 @@ Aplikacja wykorzystuje:
    javac BingoServer.java
 
 4. Uruchom serwer
+   ```bash
+   java BingoServer
+
+5. Serwer rozpocznie nasłuchiwanie na porcie 12345
