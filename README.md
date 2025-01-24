@@ -41,4 +41,17 @@ Aplikacja wykorzystuje:
    ```bash
    java BingoServer
 
-5. Serwer rozpocznie nasłuchiwanie na porcie 12345
+5. Serwer rozpocznie nasłuchiwanie na porcie `12345`.
+
+### 2️⃣ Uruchomienie klienta
+1. Otwórz nowy terminal lub konsolę.
+2. Przejdź do katalogu, w którym znajduje się plik `BingoClient.java`.
+3. Skompiluj kod klienta
+   ```bash
+   javac BingoClient.java
+
+4. Uruchom klienta:
+   ```bash
+   java BingoClient
+
+5. Klient połączy się z serwerem, a następnie wyświetli swoją kartę Bingo.
