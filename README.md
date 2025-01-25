@@ -60,14 +60,24 @@ Aplikacja wykorzystuje:
 
 ### Serwer:
 
+| Czynność                      | Komunikat w terminalu                     |
+|-------------------------------|-------------------------------------------|
+| Uruchomienie serwera          | `Uruchamianie serwera do gry w bingo...`  |
+| Losowanie liczb               | `Wylosowana liczba: 12`                   |
+|                               | `Wylosowana liczba: 90`                   |
+|                               | `Wylosowana liczba: 47`                   |
+| Zgłoszenie BINGO              | `Gracz /192.168.1.5 zdobył BINGO!`        |
+
 ### Klient:
 
-| Akcja                         | Serwer odpowiada                          | Klient wyświetla                        |
-|-------------------------------|-------------------------------------------|-----------------------------------------|
-| Uruchomienie serwera          | `Bingo Server is starting...`             | Nie dotyczy                             |
-| Połączenie klienta            | `Client connected: /192.168.1.5`          | `Connected to Bingo server.`            |
-| Losowanie liczby              | `Number drawn: 12`                        | `Number drawn: 12`                      |
-| Klient zgłasza "BINGO"        | `Player /192.168.1.5 has BINGO!`          | `BINGO! Player /192.168.1.5 has BINGO!` |
-| Koniec gry                    | `Player /192.168.1.5 won the game!`       | `Game over. You won!`                   |
+| Czynność                      | Komunikat w terminalu                                 |
+|-------------------------------|-------------------------------------------------------|
+| Połączenie z serwerem         | `Połączono z serwerem do gry w bingo...`              |
+| Wyświetlanie karty            | `Twoja karta bingo: [6, 7, 34, 47, 90]`               |
+| Odbieranie numerów            | `Wylosowana liczba: 90`                               |
+|                               | `Wylosowana liczba: 47`                               |
+|                               | `Wylosowana liczba: 12`                               |
+| Zgłoszenie BINGO              | `BINGO`                                               |
+|                               | Odpowiedź serwera: `Gracz /192.168.1.5 zdobył BINGO!` |
 
 
