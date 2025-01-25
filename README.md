@@ -111,3 +111,6 @@ Aplikacja wykorzystuje:
    Gracz /192.168.1.5 zdobył BINGO!
    ```
 
+ℹ️ Uwagi
+- **Komunikacja w LAN**: Aplikacja działa w sieci lokalnej. Upewnij się, że firewall nie blokuje portu `12345`.
+- **Jedna wygrana**: Serwer nie obsługuje kolejnych zgłoszeń "BINGO!" po ogłoszeniu zwycięzcy.
