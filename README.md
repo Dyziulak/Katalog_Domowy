@@ -89,7 +89,7 @@ Aplikacja wykorzystuje:
   
 ## 📊 Przykładowy przebieg gry
 
-## Serwer:
+### Serwer:
    ```bash
    Uruchamianie serwera do gry w bingo...
    Serwer jest obsługiwany na porcie 12345
@@ -97,6 +97,17 @@ Aplikacja wykorzystuje:
    Wylosowana liczba: 47
    Wylosowana liczba: 12
    Gracz /192.168.1.5 zdobył BINGO!
+   ```
 
-## Klient:
+### Klient:
    ```bash
+   Połączono z serwerem do gry w bingo.
+   Witamy w grze w bingo! Twoja gra się rozpoczeła.
+   Twoja karta bingo: [6, 7, 34, 47, 90]
+   Wylosowana liczba: 90
+   Wylosowana liczba: 47
+   Wylosowana liczba: 12
+   BINGO
+   Gracz /192.168.1.5 zdobył BINGO!
+   ```
+
