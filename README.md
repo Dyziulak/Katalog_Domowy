@@ -55,3 +55,19 @@ Aplikacja wykorzystuje:
    java BingoClient
 
 5. Klient połączy się z serwerem, a następnie wyświetli swoją kartę Bingo.
+
+## 🖥️ Przykłady interakcji
+
+### Serwer:
+
+### Klient:
+
+| Akcja                         | Serwer odpowiada                          | Klient wyświetla                        |
+|-------------------------------|-------------------------------------------|-----------------------------------------|
+| Uruchomienie serwera          | `Bingo Server is starting...`             | Nie dotyczy                             |
+| Połączenie klienta            | `Client connected: /192.168.1.5`          | `Connected to Bingo server.`            |
+| Losowanie liczby              | `Number drawn: 12`                        | `Number drawn: 12`                      |
+| Klient zgłasza "BINGO"        | `Player /192.168.1.5 has BINGO!`          | `BINGO! Player /192.168.1.5 has BINGO!` |
+| Koniec gry                    | `Player /192.168.1.5 won the game!`       | `Game over. You won!`                   |
+
+
