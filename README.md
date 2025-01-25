@@ -81,3 +81,20 @@ Aplikacja wykorzystuje:
 |                               | Odpowiedź serwera: `Gracz /192.168.1.5 zdobył BINGO!` |
 
 
+## ❌ Obsługa błędów
+- **Serwer wyłączony**: Jeśli serwer zostanie zatrzymany, klienci otrzymają komunikat o rozłączeniu.
+- **Niepoprawne zgłoszenie BINGO**: Jeśli karta klienta jest niepoprawna, serwer informuje o błędzie.
+- **Utrata połączenia**: W przypadku rozłączenia serwera lub klienta aplikacja kończy działanie i wyświetla odpowiedni komunikat.
+
+  
+## 📊 Przykładowy przebieg gry
+
+## Serwer:
+   ```bash
+   Uruchamianie serwera do gry w bingo...
+   Serwer jest obsługiwany na porcie 12345
+   Wylosowana liczba: 90
+   Wylosowana liczba: 47
+   Wylosowana liczba: 12
+   Gracz /192.168.1.5 zdobył BINGO!
+
