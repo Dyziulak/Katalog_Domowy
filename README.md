@@ -98,3 +98,5 @@ Aplikacja wykorzystuje:
    Wylosowana liczba: 12
    Gracz /192.168.1.5 zdobył BINGO!
 
+## Klient:
+   ```bash
