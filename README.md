@@ -1,116 +1,122 @@
-# Gra w Bingo - Aplikacja Klient-Serwer 🎲
+# Gra w Statki - Aplikacja RMI 🚢
 
 ## 📜 Opis projektu
-Gra w Bingo to aplikacja klient-serwer umożliwiająca wielu użytkownikom udział w grze w czasie rzeczywistym.  
-Serwer losuje liczby w ustalonych odstępach czasu i informuje o tym wszystkich podłączonych klientów.  
-Każdy klient posiada swoją losowo wygenerowaną kartę Bingo i może zgłaszać "BINGO!", jeśli uzna, że jego karta spełnia warunki wygranej.
+Gra w Statki to aplikacja oparta na technologii RMI (Remote Method Invocation), umożliwiająca dwóch graczom udział w rozgrywce w czasie rzeczywistym. 
+Serwer zarządza całą logiką gry oraz spójnością danych, natomiast klienci mogą prowadzić bitwy morskie z przeciwnikiem, wykonując ruchy na zdalnej planszy.
 
 ### Funkcje aplikacji:
-- **Serwer**: 
-  - Losuje liczby co 5 sekund.
-  - Wysyła wylosowane liczby do klientów.
-  - Obsługuje zgłoszenia "BINGO!" i weryfikuje wygraną.
-- **Klient**: 
-  - Wyświetla swoją kartę Bingo.
-  - Odbiera wylosowane liczby od serwera.
-  - Pozwala zgłosić "BINGO!" i informuje o wyniku.
+- **Serwer RMI:**
+  - Udostępnia metody zdalne umożliwiające:
+    - Rejestrację graczy.
+    - Zarządzanie planszami i ich stanem.
+    - Obsługę ruchów graczy i sprawdzanie trafień.
+    - Zakończenie gry po zatopieniu wszystkich statków przeciwnika.
+  - Obsługuje jednoczesne połączenia od wielu klientów.
+
+- **Klient RMI:**
+  - Łączy się z serwerem.
+  - Pozwala na interakcję z grą poprzez:
+    - Wyświetlanie planszy.
+    - Wykonywanie ruchów (np. strzały).
+    - Odbieranie wyników strzałów od serwera.
 
 Aplikacja wykorzystuje:
-- **Programowanie wielowątkowe**: Każdy klient jest obsługiwany w osobnym wątku.
-- **Komunikację sieciową**: Gniazda (sockets) umożliwiają przesyłanie danych między serwerem a klientami.
-- **Obsługę błędów**: Reaguje na sytuacje takie jak utrata połączenia czy nieprawidłowe zgłoszenie "BINGO!".
+- **Technologię RMI:** Do komunikacji między klientem a serwerem.
+- **Programowanie współbieżne:** Obsługuje wielu graczy jednocześnie.
+- **Obsługę wyjątków:** Reaguje na utratę połączenia, błędy serwera lub nieprawidłowe akcje klienta.
 
 ---
 
 ## ⚙️ Wymagania
-- **Java Development Kit (JDK)** 8 lub nowszy
-- Sieć lokalna (LAN)
+- **Java Development Kit (JDK)** 8 lub nowszy.
+- Sieć lokalna (LAN).
 
 ---
 
 ## 🚀 Instrukcja uruchomienia
 
-### 1️⃣ Uruchomienie serwera
-1. Otwórz terminal lub konsolę.
-2. Przejdź do katalogu, w którym znajduje się plik `BingoServer.java`.
-3. Skompiluj kod serwera:
+### 1️⃣ Kompilacja plików
+1. Otwórz terminal i przejdź do katalogu, w którym znajdują się pliki `.java`.
+2. Skompiluj wszystkie pliki:
    ```bash
-   javac BingoServer.java
+   javac *.java
+   ```
 
-4. Uruchom serwer
+### 2️⃣ Uruchomienie serwera
+1. Uruchom rejestr RMI:
    ```bash
-   java BingoServer
-
-5. Serwer rozpocznie nasłuchiwanie na porcie `12345`.
-
-### 2️⃣ Uruchomienie klienta
-1. Otwórz nowy terminal lub konsolę.
-2. Przejdź do katalogu, w którym znajduje się plik `BingoClient.java`.
-3. Skompiluj kod klienta
+   rmiregistry
+   ```
+2. W osobnym terminalu uruchom serwer:
    ```bash
-   javac BingoClient.java
+   java BattleshipServer
+   ```
+3. Serwer rozpocznie nasłuchiwanie na domyślnym porcie RMI.
 
-4. Uruchom klienta:
+### 3️⃣ Uruchomienie klientów
+1. Otwórz nowy terminal dla każdego gracza.
+2. Uruchom klienta:
    ```bash
-   java BingoClient
+   java BattleshipClient
+   ```
+3. Klienci połączą się z serwerem i rozpoczną grę.
 
-5. Klient połączy się z serwerem, a następnie wyświetli swoją kartę Bingo.
+---
 
 ## 🖥️ Przykłady interakcji
 
 ### Serwer:
 
-| Czynność                      | Komunikat w terminalu                     |
-|-------------------------------|-------------------------------------------|
-| Uruchomienie serwera          | `Uruchamianie serwera do gry w bingo...`  |
-| Losowanie liczb               | `Wylosowana liczba: 12`                   |
-|                               | `Wylosowana liczba: 90`                   |
-|                               | `Wylosowana liczba: 47`                   |
-| Zgłoszenie BINGO              | `Gracz /192.168.1.5 zdobył BINGO!`        |
+| Czynność                 | Komunikat w terminalu                           |
+|--------------------------|-----------------------------------------------|
+| Uruchomienie serwera     | `Serwer gry w statki uruchomiony.`             |
+| Rejestracja gracza       | `Gracz o ID 1 dołączył do gry.`               |
+| Ruch gracza              | `Gracz 1 strzela w pole B3. Wynik: Pudło.`     |
+| Trafienie                | `Gracz 2 strzela w pole C4. Wynik: Trafiony.` |
+| Koniec gry               | `Gracz 1 wygrał. Wszystkie statki przeciwnika zatopione.` |
 
 ### Klient:
 
-| Czynność                      | Komunikat w terminalu                                 |
-|-------------------------------|-------------------------------------------------------|
-| Połączenie z serwerem         | `Połączono z serwerem do gry w bingo...`              |
-| Wyświetlanie karty            | `Twoja karta bingo: [6, 7, 34, 47, 90]`               |
-| Odbieranie numerów            | `Wylosowana liczba: 90`                               |
-|                               | `Wylosowana liczba: 47`                               |
-|                               | `Wylosowana liczba: 12`                               |
-| Zgłoszenie BINGO              | `BINGO`                                               |
-|                               | Odpowiedź serwera: `Gracz /192.168.1.5 zdobył BINGO!` |
+| Czynność                 | Komunikat w terminalu                                |
+|--------------------------|----------------------------------------------------|
+| Połączenie z serwerem    | `Połączono z serwerem gry w statki.`                |
+| Wyświetlenie planszy     | `Twoja plansza: 
+ ~ ~ ~ ~ ~
+ ~ ~ ~ ~ ~
+ ~ ~ ~ ~ ~` |
+| Wykonanie ruchu          | `Podaj współrzędne (np. A1):`                       |
+| Wynik strzału            | `Pudło! Czekaj na ruch przeciwnika.`                |
+| Trafienie                | `Trafiony! Wykonaj kolejny ruch.`                   |
 
+---
 
 ## ❌ Obsługa błędów
-- **Serwer wyłączony**: Jeśli serwer zostanie zatrzymany, klienci otrzymają komunikat o rozłączeniu.
-- **Niepoprawne zgłoszenie BINGO**: Jeśli karta klienta jest niepoprawna, serwer informuje o błędzie.
-- **Utrata połączenia**: W przypadku rozłączenia serwera lub klienta aplikacja kończy działanie i wyświetla odpowiedni komunikat.
+- **Utrata połączenia z serwerem:** Klienci otrzymają komunikat o błędzie i zakończą działanie.
+- **Nieprawidłowe współrzędne:** Jeśli gracz poda błędne współrzędne (np. poza planszą), serwer zwróci stosowny komunikat.
+- **Serwer zatrzymany:** W przypadku przerwania działania serwera, klienci otrzymają odpowiedni komunikat.
 
-  
+---
+
 ## 📊 Przykładowy przebieg gry
 
 ### Serwer:
-   ```bash
-   Uruchamianie serwera do gry w bingo...
-   Serwer jest obsługiwany na porcie 12345
-   Wylosowana liczba: 90
-   Wylosowana liczba: 47
-   Wylosowana liczba: 12
-   Gracz /192.168.1.5 zdobył BINGO!
-   ```
+```bash
+Serwer gry w statki uruchomiony.
+Gracz o ID 1 dołączył do gry.
+Gracz o ID 2 dołączył do gry.
+Gracz 1 strzela w pole B3. Wynik: Pudło.
+Gracz 2 strzela w pole C4. Wynik: Trafiony.
+Gracz 1 wygrał. Wszystkie statki przeciwnika zatopione.
+```
 
 ### Klient:
-   ```bash
-   Połączono z serwerem do gry w bingo.
-   Witamy w grze w bingo! Twoja gra się rozpoczeła.
-   Twoja karta bingo: [6, 7, 34, 47, 90]
-   Wylosowana liczba: 90
-   Wylosowana liczba: 47
-   Wylosowana liczba: 12
-   BINGO
-   Gracz /192.168.1.5 zdobył BINGO!
-   ```
-
-ℹ️ Uwagi
-- **Komunikacja w LAN**: Aplikacja działa w sieci lokalnej. Upewnij się, że firewall nie blokuje portu `12345`.
-- **Jedna wygrana**: Serwer nie obsługuje kolejnych zgłoszeń "BINGO!" po ogłoszeniu zwycięzcy.
+```bash
+Połączono z serwerem gry w statki.
+Twoja plansza: 
+~ ~ ~ ~ ~
+~ ~ ~ ~ ~
+~ ~ ~ ~ ~
+Podaj współrzędne (np. A1): B3
+Pudło! Czekaj na ruch przeciwnika.
+Podaj współrzędne (np. A1): C4
+Trafiony! Wykonaj kolejny ruch.
